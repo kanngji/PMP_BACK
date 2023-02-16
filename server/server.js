@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const listRoutes = require("./routes/lists");
+const crawlingRoutes = require("./routes/crawling");
 
 // express app
 const app = express();
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use("/api/lists", listRoutes);
+app.use("/api/crawls", crawlingRoutes);
 
 // connect to db
 mongoose

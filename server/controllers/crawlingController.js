@@ -22,10 +22,20 @@ const getHtml = async () => {
         title: $(element).find("span.cluster_head_sub_topic").text(),
       };
     });
-    console.log(ulList);
+
+    return ulList;
   } catch (error) {
     console.error(error);
   }
 };
+//getHtml();
+// 크롤링 get
+const getCrawls = async (req, res) => {
+  const crawls = await getHtml();
+  console.log(crawls);
+  const tr = JSON.stringify(crawls);
 
-getHtml();
+  res.send(JSON.stringify(crawls));
+};
+
+module.exports = getCrawls;
